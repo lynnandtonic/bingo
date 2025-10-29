@@ -47,6 +47,13 @@ input[type="radio"] {
   margin: 0;
 }
 
+label:has(input:focus-visible),
+.example input:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px red;
+}
+
 .colorPicker {
   margin-bottom: var(--padding);
   display: flex;
