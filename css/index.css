@@ -1,0 +1,238 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color: #ccc;
+  --blue: #1092c8;
+  --orange: #e8791f;
+  --green: #3f9d16;
+  --yellow: #e9e727;
+  --pink: #efabd1;
+  --grey: #b2b2b2;
+  --olive: #6a8335;
+  --brown: #8f713c;
+  --salmon: #f15e36;
+  --purple: #bf63be;
+  --black: #000;
+  --padding: 20px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: Verdana, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  margin: 0;
+}
+
+.colorPicker {
+  margin-bottom: var(--padding);
+  display: flex;
+  background-color: #ccc;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.colorPicker > * {
+  flex: 1;
+  padding: 5px 3px;
+}
+
+.colorPicker > span {
+  padding: 5px 10px;
+}
+
+.colorPicker > :not(:last-child) {
+  border-right: 1px solid black;
+}
+
+.colorPicker label {
+  cursor: pointer;
+}
+
+.blue {
+  background-color: var(--blue);
+  color: white;
+}
+.orange {
+  background-color: var(--orange);
+  color: white;
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.green {
+  background-color: var(--green);
+  color: white;
+}
+.pink {
+  background-color: var(--pink);
+}
+.grey {
+  background-color: var(--grey);
+}
+.olive {
+  background-color: var(--olive);
+  color: white;
+}
+.brown {
+  background-color: var(--brown);
+  color: white;
+}
+.salmon {
+  background-color: var(--salmon);
+  color: white;
+}
+.purple {
+  background-color: var(--purple);
+  color: white;
+}
+.black {
+  background-color: var(--black);
+  color: white;
+}
+
+body:has(input[value="blue"]:checked) { --color: var(--blue); --label-color: white; }
+body:has(input[value="orange"]:checked) { --color: var(--orange); --label-color: white; }
+body:has(input[value="green"]:checked) { --color: var(--green); --label-color: white; }
+body:has(input[value="yellow"]:checked) { --color: var(--yellow); }
+body:has(input[value="pink"]:checked) { --color: var(--pink); }
+body:has(input[value="grey"]:checked) { --color: var(--grey); }
+body:has(input[value="olive"]:checked) { --color: var(--olive); --label-color: white; }
+body:has(input[value="brown"]:checked) { --color: var(--brown); --label-color: white; }
+body:has(input[value="salmon"]:checked) { --color: var(--salmon); --label-color: white; }
+body:has(input[value="purple"]:checked) { --color: var(--purple); --label-color: white; }
+body:has(input[value="black"]:checked) { --color: var(--black); --label-color: white; }
+
+button {
+  width: 200px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+header {
+  margin: var(--padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.target {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--padding)/2);
+}
+
+.example {
+  width: 200px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+.example input {
+  width: 20%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.example input:hover {
+  background-color: #eee;
+}
+
+.example input[type="checkbox"]:checked {
+  background-color: var(--color);
+}
+
+.example i.active {
+  background-color: var(--color);
+}
+
+.board {
+  margin: var(--padding);
+  border: 1px solid black;
+}
+
+.board .letter {
+  display: flex;
+  align-items: stretch;
+}
+
+.board .letter:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+.board .letter > * {
+  padding: 12px 3px;
+  flex: 1;
+  display: grid;
+  place-content: center;
+}
+
+.board .letter > :not(:last-child) {
+  border-right: 1px solid black;
+}
+
+.board label {
+  background-color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.board label:hover {
+  background-color: #eee;
+}
+
+.board label:has(input[type="checkbox"]:checked) {
+  background-color: var(--color);
+  color: var(--label-color);
+  font-weight: 600;
+}
+
+.current {
+  width: 300px;
+  height: 200px;
+  display: grid;
+  place-content: center;
+  border: 1px solid black;
+  font-size: 5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 var(--padding);
+}
