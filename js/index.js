@@ -71,4 +71,5 @@ const buttonReset = document.getElementById('reset');
 
 buttonReset.addEventListener('click', () => {
   localStorage.clear();
+  window.location.reload();
 });
