@@ -35,8 +35,18 @@ body {
   line-height: 1.5;
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
 h1, h2, h3 {
   margin: 0;
+}
+
+strong {
+  font-weight: 700;
 }
 
 input[type="checkbox"],
@@ -260,4 +270,48 @@ header {
   display: flex;
   justify-content: space-between;
   margin: 0 var(--padding);
+}
+
+/* GUIDE
+*------------------------------*/
+
+.guide {
+  max-width: 600px;
+  padding: var(--padding);
+  margin: 0 auto;
+}
+
+.guide figure {
+  margin: 1em 0;
+}
+
+.guide img {
+  width: 100%;
+  height: auto;
+}
+
+.guide img.small {
+  width: 60%;
+  min-width: 250px;
+}
+
+.guide img.game {
+  border: 1px solid #ccc;
+}
+
+.guide figcaption {
+  font-size: 80%;
+  margin: -.5em 0 0;
+}
+
+.guide .patterns {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.guide .patterns figure {
+  margin: 0;
 }
