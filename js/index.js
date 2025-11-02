@@ -52,6 +52,7 @@ buttonClear.addEventListener('click', () => {
     var checkbox = document.getElementById(String(i));
     localStorage.setItem("checkbox" + String(i), checkbox.checked); 
   }
+  document.getElementById("current-number").innerHTML=('');
 });
 
 // clean example
