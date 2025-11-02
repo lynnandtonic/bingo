@@ -49,12 +49,19 @@ strong {
   font-weight: 700;
 }
 
+.board input[type="checkbox"],
+.colorPicker input[type="radio"] {
+  height: 0;
+  width: 0;
+  margin: 0;
+  opacity: 0;
+}
+
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   background-color: white;
-  margin: 0;
 }
 
 label:has(input:focus-visible),
@@ -176,12 +183,18 @@ header {
   display: flex;
   align-items: stretch;
   flex-wrap: wrap;
+  gap: 0;
   border: 1px solid black;
 }
 
 .example input {
   width: 20%;
+  height: 20%;
+  margin: 0;
+  display: block;
+  aspect-ratio: 1;
   border: 1px solid black;
+  border-radius: 0;
   cursor: pointer;
 }
 
@@ -254,12 +267,12 @@ header {
   font-size: 5rem;
 }
 
-.previous {
-  opacity: .7;
-}
-
 .previous:has(#previous-number:empty) {
   opacity: 0;
+}
+
+.previous:has(#previous-number:not(:empty)) {
+  opacity: .7;
 }
 
 .previous {
