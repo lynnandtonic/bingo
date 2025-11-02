@@ -240,8 +240,20 @@ header {
   display: grid;
   place-content: center;
   border: 1px solid black;
-  font-size: 5rem;
   font-weight: 500;
+  font-size: 5rem;
+}
+
+.previous {
+  opacity: .7;
+}
+
+.previous:has(#previous-number:empty) {
+  opacity: 0;
+}
+
+.previous {
+  font-size: .8rem;
 }
 
 .buttons {

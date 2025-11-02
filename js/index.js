@@ -1,20 +1,33 @@
 // Show last selected number in display
 const checkboxes = document.querySelectorAll('input[name="number"]');
+let currentNumber = document.getElementById("current-number");
+let previousNumber = document.getElementById("previous-number");
 let mostRecentCheckbox = null;
 
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', (event) => {
     if (event.target.checked) { // Only update if the checkbox is being checked, not unchecked
       mostRecentCheckbox = event.target;
-      document.getElementById("current-number").innerHTML=('Most recently checked checkbox:', mostRecentCheckbox.value || mostRecentCheckbox.value || mostRecentCheckbox);
-      localStorage.setItem("mostRecentCheckbox", mostRecentCheckbox.value); 
+      if (currentNumber.innerHTML.trim() == "") {
+        currentNumber.innerHTML=('Most recently checked checkbox:', mostRecentCheckbox.value);
+        localStorage.setItem("mostRecentCheckbox", mostRecentCheckbox.value); 
+      }
+      else {
+        let lastCheckbox = currentNumber.innerHTML;
+        previousNumber.innerHTML=('Previous checkbox:', lastCheckbox);
+        currentNumber.innerHTML=('Most recently checked checkbox:', mostRecentCheckbox.value);
+        localStorage.setItem("mostRecentCheckbox", mostRecentCheckbox.value); 
+        localStorage.setItem("previousCheckbox", lastCheckbox); 
+      }
     }
   });
 });
 
 const storedCurrent = localStorage.getItem('mostRecentCheckbox');
+const storedPrevious = localStorage.getItem('previousCheckbox');
 if(localStorage.length > 0) {
-  document.getElementById("current-number").innerHTML= storedCurrent;
+  currentNumber.innerHTML= storedCurrent;
+  previousNumber.innerHTML= storedPrevious;
 }
 
 // Persist radios
@@ -58,8 +71,10 @@ buttonClear.addEventListener('click', () => {
     var checkbox = document.getElementById(String(i));
     localStorage.setItem("checkbox" + String(i), checkbox.checked); 
   }
-  document.getElementById('current-number').innerHTML= '';
+  currentNumber.innerHTML= '';
+  previousNumber.innerHTML= '';
   localStorage.removeItem('mostRecentCheckbox');
+  localStorage.removeItem('previousCheckbox');
 });
 
 // clean example
