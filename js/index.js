@@ -7,9 +7,15 @@ checkboxes.forEach(checkbox => {
     if (event.target.checked) { // Only update if the checkbox is being checked, not unchecked
       mostRecentCheckbox = event.target;
       document.getElementById("current-number").innerHTML=('Most recently checked checkbox:', mostRecentCheckbox.value || mostRecentCheckbox.value || mostRecentCheckbox);
+      localStorage.setItem("mostRecentCheckbox", mostRecentCheckbox.value); 
     }
   });
 });
+
+const storedCurrent = localStorage.getItem('mostRecentCheckbox');
+if(localStorage.length > 0) {
+  document.getElementById("current-number").innerHTML= storedCurrent;
+}
 
 // Persist radios
 var radios = document.getElementsByName("color");
@@ -52,7 +58,8 @@ buttonClear.addEventListener('click', () => {
     var checkbox = document.getElementById(String(i));
     localStorage.setItem("checkbox" + String(i), checkbox.checked); 
   }
-  document.getElementById("current-number").innerHTML=('');
+  document.getElementById('current-number').innerHTML= '';
+  localStorage.removeItem('mostRecentCheckbox');
 });
 
 // clean example
